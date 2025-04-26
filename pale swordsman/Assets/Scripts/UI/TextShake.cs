@@ -21,10 +21,10 @@ public class TextShake : MonoBehaviour
 
             var verts = textInfo.meshInfo[charInfo.materialReferenceIndex].vertices;
 
-            for (int j = 0; j < 2; ++j)
+            for (int j = 0; j < 4; ++j)
             {
                 var orig = verts[charInfo.vertexIndex + j];
-                verts[charInfo.vertexIndex + j] = orig + new Vector3(Mathf.Sin(Time.time * 40f + orig.x * 0.01f) * 10f, Mathf.Sin(Time.time * 40f + orig.x * 0.01f) * 10f, 0);
+                verts[charInfo.vertexIndex + j] = orig + new Vector3(Mathf.Sin(Time.time * 60f + orig.x * 0.01f) * 2.5f, Mathf.Sin(Time.time * 60f + orig.x * 0.01f) * 2.5f, 0);
             }
         }
 
