@@ -21,10 +21,12 @@ public class TouchManager : MonoBehaviour
     {
         if (touchPressAction.WasPressedThisFrame())
         {
+            ZoneController.instance.ZoneOn();
         }
 
         else if (touchPressAction.WasReleasedThisFrame())
         {
+            ZoneController.instance.ZoneOff();
         }
     }
 }

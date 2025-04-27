@@ -6,9 +6,6 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Slider bufferSlider;
 
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float health;
-
     private float lerpSpeed = 0.05f;
 
     public static HealthBar instance;
@@ -20,29 +17,19 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        health = maxHealth;
+        healthSlider.value = PlayerController.instance.health;
     }
 
     private void Update()
     {
-        if (healthSlider.value != health)
+        if (healthSlider.value != PlayerController.instance.health)
         {
-            healthSlider.value = health;
+            healthSlider.value = PlayerController.instance.health;
         }
 
         if (healthSlider.value != bufferSlider.value)
         {
-            bufferSlider.value = Mathf.Lerp(bufferSlider.value, health, lerpSpeed);
-        }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            //game over
+            bufferSlider.value = Mathf.Lerp(bufferSlider.value, PlayerController.instance.health, lerpSpeed);
         }
     }
 }
